@@ -20,5 +20,6 @@ from skincare import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('skincare/', views.skincare_list)
+    path('skincare/', views.skincare_list),
+    path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail')
 ]
