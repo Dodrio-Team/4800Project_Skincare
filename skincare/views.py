@@ -21,3 +21,13 @@ def skincare_detail(request, product_id):
 
     serializer = SkincareSerializer(product)
     return JsonResponse({'skincare_product': serializer.data})
+
+def skincare_list_names(request):
+    # Get all the skincare products
+    products = Skincare.objects.all()
+
+    # Extract the names from the products
+    product_names = [product.name for product in products]
+
+    # Return the names as JSON
+    return JsonResponse({'skincare_product_names': product_names})

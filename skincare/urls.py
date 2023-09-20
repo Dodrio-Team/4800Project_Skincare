@@ -24,4 +24,5 @@ urlpatterns = [
     path('skincare/', views.skincare_list),
     path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail'),
     path('app/', TemplateView.as_view(template_name='index.html')),
+    path('skincare/names/', views.skincare_list_names, name='skincare_list_names'),
 ]
