@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from skincare import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('skincare/', views.skincare_list),
-    path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail')
+    path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail'),
+    path('app/', TemplateView.as_view(template_name='index.html')),
 ]
