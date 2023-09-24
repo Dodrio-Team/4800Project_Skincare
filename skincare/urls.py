@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from skincare import views
+from . import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
     path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail'),
     path('app/', TemplateView.as_view(template_name='index.html')),
     path('skincare/names/', views.skincare_list_names, name='skincare_list_names'),
+    path('salad_lib/', views.salad_lib, name='salad_lib'),
 ]

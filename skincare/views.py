@@ -1,6 +1,10 @@
 from django.http import JsonResponse
+from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Skincare
 from .serializers import SkincareSerializer
+from lxml import html
+import requests
 
 # first HTTP API - GET request
 def skincare_list(request):
@@ -31,3 +35,23 @@ def skincare_list_names(request):
 
     # Return the names as JSON
     return JsonResponse({'skincare_product_names': product_names})
+
+def salad_lib(request):
+    # define the URL of the website you want to scrape
+    url = 'https://practice.geeksforgeeks.org/courses/'  
+
+    # Send an HTTP GET request to the URL
+    response = requests.get(url)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Parse the HTML content of the page using lxml
+        tree = html.fromstring(response.text)
+
+        # You can use XPath to locate specific elements on the page
+        # In this case, we'll just return "Hello, World!"
+        hello_world = "Hello, World!"
+
+        return HttpResponse(hello_world)
+    else:
+        return HttpResponse("Failed to retrieve the web page.")
