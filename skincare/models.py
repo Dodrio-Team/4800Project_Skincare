@@ -1,5 +1,4 @@
 from django.db import models
-from db_connection import db
 
 class Skincare(models.Model):
     name = models.CharField(max_length=200)
