@@ -75,3 +75,19 @@ def farm_lib(request):
         return HttpResponse(new_text)
     else:
         return HttpResponse("Failed to retrieve the web page.")
+    
+def soup_lib(request):
+
+    url = 'https://github.com/Dodrio-Team/4800Project_Skincare'  
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+
+        tree = html.fromstring(response.text)
+
+        nmsgs = "Wow it actually worked"
+
+        return HttpResponse(nmsgs)
+    else:
+        return HttpResponse("Failed to retrieve the web page.")

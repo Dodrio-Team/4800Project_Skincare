@@ -28,4 +28,5 @@ urlpatterns = [
     path('skincare/names/', views.skincare_list_names, name='skincare_list_names'),
     path('salad_lib/', views.salad_lib, name='salad_lib'),
     path('farm_lib/', views.farm_lib, name='farm_lib'),
+    path('soup_lib/', views.soup_lib, name='soup_lib'),
 ]
