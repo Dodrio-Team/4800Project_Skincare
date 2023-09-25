@@ -55,3 +55,23 @@ def salad_lib(request):
         return HttpResponse(hello_world)
     else:
         return HttpResponse("Failed to retrieve the web page.")
+
+def farm_lib(request):
+    # define the URL of the website you want to scrape
+    url = 'https://github.com/Dodrio-Team/4800Project_Skincare'  
+
+    # Send an HTTP GET request to the URL
+    response = requests.get(url)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Parse the HTML content of the page using lxml
+        tree = html.fromstring(response.text)
+
+        # You can use XPath to locate specific elements on the page
+        # In this case, we'll just return "Hello, World!"
+        new_text = "our team is dodrio hehe"
+
+        return HttpResponse(new_text)
+    else:
+        return HttpResponse("Failed to retrieve the web page.")
