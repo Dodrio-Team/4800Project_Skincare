@@ -38,7 +38,7 @@ def skincare_list_names(request):
 
 def salad_lib(request):
     # define the URL of the website you want to scrape
-    url = 'https://practice.geeksforgeeks.org/courses/'  
+    url = 'https://github.com/Dodrio-Team/4800Project_Skincare'  
 
     # Send an HTTP GET request to the URL
     response = requests.get(url)
