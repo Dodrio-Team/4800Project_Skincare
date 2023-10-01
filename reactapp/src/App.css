@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.FrontPage {
+  text-align: center;
+  color: #5F4F59;
+}
+
+* {background-color: blanchedalmond;}
