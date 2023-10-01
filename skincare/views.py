@@ -5,15 +5,15 @@ from .models import Skincare
 from .serializers import SkincareSerializer
 from lxml import html
 import requests
-import pymongo
+# import pymongo
 
-client = pymongo.MongoClient('mongodb+srv://tiff.qoiollp.mongodb.net/')
+# client = pymongo.MongoClient('mongodb+srv://tiffmt817:wuY6YUnQKkmkW4eR@tiff.qoiollp.mongodb.net/?retryWrites=true&w=majority')
 
-#Define Db Name
-dbname = client['skincare']
+# #Define Db Name
+# dbname = client['skincare']
 
-#Define Collection
-collection = dbname['products']
+# #Define Collection
+# collection = dbname['products']
 
 # first HTTP API - GET request
 def skincare_list(request):
