@@ -24,9 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('skincare/', views.skincare_list),
     path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail'),
-    path('app/', TemplateView.as_view(template_name='index.html')),
+    # path('app/', TemplateView.as_view(template_name='index.html')),
     path('skincare/names/', views.skincare_list_names, name='skincare_list_names'),
     path('salad_lib/', views.salad_lib, name='salad_lib'),
     path('farm_lib/', views.farm_lib, name='farm_lib'),
     path('soup_lib/', views.soup_lib, name='soup_lib'),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]
