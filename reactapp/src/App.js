@@ -2,12 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom'; 
 import FrontPage from './FrontPage';
+import SkincareList from './SkincareList';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='' element={<FrontPage />} />
+        <Route path='/skincare-products' element={<SkincareList/>} />
 
       </Routes>
     </BrowserRouter>

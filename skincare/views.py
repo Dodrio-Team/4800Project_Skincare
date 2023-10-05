@@ -1,10 +1,14 @@
 from django.http import JsonResponse
+from pymongo import MongoClient
+from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Skincare
 from .serializers import SkincareSerializer
 from lxml import html
 import requests
+import re
+
 # import pymongo
 
 # client = pymongo.MongoClient('mongodb+srv://tiffmt817:wuY6YUnQKkmkW4eR@tiff.qoiollp.mongodb.net/?retryWrites=true&w=majority')
@@ -14,6 +18,23 @@ import requests
 
 # #Define Collection
 # collection = dbname['products']
+
+def get_skincare_products(request):
+    search_query = request.GET.get('search', '')
+
+    # Establish a connection to MongoDB and filter products by name using regex
+    client = MongoClient(settings.MONGO_DB_HOST)
+    db = client[settings.MONGO_DB_NAME]
+    collection = db.products
+
+    # Filter skincare products based on search query (name) using regex (case-insensitive)
+    regex_pattern = f'.*{search_query}.*'
+    skincare_products = list(collection.find({"Label": {"$regex": regex_pattern, "$options": "i"}}))
+
+    # Close the MongoDB connection
+    client.close()
+
+    return JsonResponse(skincare_products, safe=False)
 
 # first HTTP API - GET request
 def skincare_list(request):

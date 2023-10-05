@@ -73,6 +73,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'skincare.wsgi.application'
 
+MONGO_DB_NAME = 'skincare'
+MONGO_DB_HOST = 'mongodb+srv://tiffmt817:wuY6YUnQKkmkW4eR@tiff.qoiollp.mongodb.net/'
+
+MONGO_COLLECTION_NAME = 'products'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
