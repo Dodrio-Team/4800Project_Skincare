@@ -63,9 +63,10 @@
 # # print(record)
 
 import pymongo
+import certifi
 
 # Connect to MongoDB
-client = pymongo.MongoClient("mongodb+srv://klpham137:m0ngoo_DB6969@test.0rys8om.mongodb.net/")
+client = pymongo.MongoClient("mongodb+srv://klpham137:m0ngoo_DB6969@test.0rys8om.mongodb.net/", tlsCAFile=certifi.where())
 
 
 # Select the database and collection
