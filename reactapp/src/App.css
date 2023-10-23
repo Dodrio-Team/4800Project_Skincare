@@ -42,4 +42,13 @@
   color: #5F4F59;
 }
 
+.front-page-container {
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow: auto; /* Enable scrolling if the content overflows the viewport */
+  /* Add additional styles as needed */
+}
+
 /* * {background-color: blanchedalmond;} */
