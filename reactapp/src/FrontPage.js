@@ -183,6 +183,12 @@ function FrontPage() {
           </Toolbar>
         </Container>
       </AppBar>
+      <h1>Welcome to Flawless! Explore the different budget-friendly products for your skintype</h1>
+      <div className="button-container">
+        <Link to="/products">
+          <button className="custom-button">Visit our Products</button>
+        </Link>
+      </div>
     </div>  
   );
 }
