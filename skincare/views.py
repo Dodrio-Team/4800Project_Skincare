@@ -8,6 +8,7 @@ from .serializers import SkincareSerializer
 from lxml import html
 import requests
 import re
+import certifi
 
 # import pymongo
 
@@ -19,22 +20,19 @@ import re
 # #Define Collection
 # collection = dbname['products']
 
-def get_skincare_products(request):
-    search_query = request.GET.get('search', '')
+def search_products(request, query):
+    client = MongoClient("mongodb+srv://klpham137:m0ngoo_DB6969@test.0rys8om.mongodb.net/", tlsCAFile=certifi.where())
+    db = client["skincare"]
+    collection = db["products"]
 
-    # Establish a connection to MongoDB and filter products by name using regex
-    client = MongoClient(settings.MONGO_DB_HOST)
-    db = client[settings.MONGO_DB_NAME]
-    collection = db.products
+    # Perform MongoDB query
+    result = collection.find({'Label': query})
 
-    # Filter skincare products based on search query (name) using regex (case-insensitive)
-    regex_pattern = f'.*{search_query}.*'
-    skincare_products = list(collection.find({"Label": {"$regex": regex_pattern, "$options": "i"}}))
+    # Convert MongoDB cursor to a list of dictionaries
+    products = list(result)
 
-    # Close the MongoDB connection
-    client.close()
-
-    return JsonResponse(skincare_products, safe=False)
+    # Return the products as JSON response
+    return JsonResponse(products, safe=False)
 
 # first HTTP API - GET request
 def skincare_list(request):

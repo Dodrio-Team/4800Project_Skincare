@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './App.css';
 import AppBar from '@mui/material/AppBar';
@@ -43,6 +44,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function FrontPage() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -57,6 +59,21 @@ function FrontPage() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleSearch = async () => {
+    try {
+      // Make an API request to your Django backend
+      const response = await axios.get(`/api/search/${searchQuery}/`);
+  
+      // Handle the response data as needed
+      console.log('Search results:', response.data);
+      // Update your component state or perform other actions with the response data
+  
+    } catch (error) {
+      // Handle errors if the API request fails
+      console.error('Error fetching search results:', error);
+    }
   };
 
   return (
@@ -180,6 +197,15 @@ function FrontPage() {
           </Box>
         </Toolbar>
       </Container>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Enter product name"
+      />
+      <Button variant="contained" onClick={handleSearch}>
+        Search
+      </Button>
     </AppBar>
   );
 }

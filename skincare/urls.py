@@ -25,10 +25,10 @@ urlpatterns = [
     path('skincare/', views.skincare_list),
     path('skincare/<int:product_id>/', views.skincare_detail, name = 'skincare_detail'),
     # path('app/', TemplateView.as_view(template_name='index.html')),
+    path('api/search/<str:query>/', views.search_products, name='search_products'),
     path('skincare/names/', views.skincare_list_names, name='skincare_list_names'),
     path('salad_lib/', views.salad_lib, name='salad_lib'),
     path('farm_lib/', views.farm_lib, name='farm_lib'),
     path('soup_lib/', views.soup_lib, name='soup_lib'),
-    path('skincare-products/', views.get_skincare_products, name='get_skincare_products'),
     path('', TemplateView.as_view(template_name='index.html')),
 ]
