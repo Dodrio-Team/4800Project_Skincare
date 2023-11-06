@@ -8,8 +8,8 @@ from .serializers import SkincareSerializer
 from lxml import html
 import requests
 import re
-
-# import pymongo
+import pymongo
+import certifi
 
 # client = pymongo.MongoClient('mongodb+srv://tiffmt817:wuY6YUnQKkmkW4eR@tiff.qoiollp.mongodb.net/?retryWrites=true&w=majority')
 
@@ -18,6 +18,25 @@ import re
 
 # #Define Collection
 # collection = dbname['products']
+
+# Connect to MongoDB
+client = pymongo.MongoClient("mongodb+srv://klpham137:m0ngoo_DB6969@test.0rys8om.mongodb.net/", tlsCAFile=certifi.where())
+
+# Select the database and collection
+db = client["skincare"]
+collection = db["products"]
+
+def search_products(query):
+    results = []
+    cursor = collection.find({'Label': {'$regex': query, '$options': 'i'}})  # Perform a case-insensitive partial match search on the 'name' field
+    for document in cursor:
+        results.append(document)
+    return JsonResponse(results, safe=False)
+
+def search_view(request):
+    query = request.GET.get('q', '')  # Get the search query from the request
+    results = search_products(query)
+    return results
 
 def get_skincare_products(request):
     search_query = request.GET.get('search', '')

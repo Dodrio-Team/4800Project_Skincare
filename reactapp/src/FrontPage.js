@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
+import axios from 'axios';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -45,6 +46,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function FrontPage() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -59,6 +61,18 @@ function FrontPage() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`/api/search/?q=${searchQuery}`);
+      // Handle the search results from the response data
+      console.log(response.data);
+    } catch (error) {
+      // Handle error cases
+      console.error('Error fetching search results:', error);
+    }
   };
 
   return (
@@ -152,6 +166,19 @@ function FrontPage() {
               ))}
             </Box>
 
+            <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search..."
+                className="search-input"
+              />
+              <Link to={`/skincare-products?search=${searchQuery}`}>
+                <button className="search-button">Search</button>
+              </Link>
+            </Box>
+                
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
