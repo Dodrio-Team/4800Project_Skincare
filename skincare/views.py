@@ -10,6 +10,8 @@ import requests
 import re
 import pymongo
 import certifi
+from bson import json_util
+import json
 
 # client = pymongo.MongoClient('mongodb+srv://tiffmt817:wuY6YUnQKkmkW4eR@tiff.qoiollp.mongodb.net/?retryWrites=true&w=majority')
 
@@ -25,6 +27,19 @@ client = pymongo.MongoClient("mongodb+srv://klpham137:m0ngoo_DB6969@test.0rys8om
 # Select the database and collection
 db = client["skincare"]
 collection = db["products"]
+
+# Retrieve all documents from the collection
+mongo_documents = list(collection.find())
+
+# Convert MongoDB documents to JSON-serializable format and serialize them to JSON strings
+json_documents = []
+for document in mongo_documents:
+    json_serializable_document = json_util.loads(json_util.dumps(document))
+    json_string = json.dumps(json_serializable_document, default=str)
+    json_documents.append(json_string)
+
+# Now, json_documents list contains JSON strings of all MongoDB documents in the collection
+print(json_documents)
 
 def search_products(query):
     results = []
