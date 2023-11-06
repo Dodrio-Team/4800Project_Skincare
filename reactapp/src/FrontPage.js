@@ -14,6 +14,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import ProductPage from './ProductsPage';
 
 /*
 function FrontPage() {
@@ -185,9 +186,13 @@ function FrontPage() {
       </AppBar>
       <h1>Welcome to Flawless! Explore the different budget-friendly products for your skintype</h1>
       <div className="button-container">
-        <Link to="/products">
+        {/* <Link>
           <button className="custom-button">Visit our Products</button>
-        </Link>
+        </Link> */}
+      <Link to="/products"> {ProductPage}
+        <button className="custom-button">Visit our Products</button>
+      </Link>
+
       </div>
     </div>  
   );
