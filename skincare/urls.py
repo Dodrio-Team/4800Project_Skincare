@@ -30,6 +30,6 @@ urlpatterns = [
     path('salad_lib/', views.salad_lib, name='salad_lib'),
     path('farm_lib/', views.farm_lib, name='farm_lib'),
     path('soup_lib/', views.soup_lib, name='soup_lib'),
-    path('skincare-products/', views.get_skincare_products, name='get_skincare_products'),
+    path('skincare-products/', views.search_view, name='get_skincare_products'),
     path('', TemplateView.as_view(template_name='index.html')),
 ]

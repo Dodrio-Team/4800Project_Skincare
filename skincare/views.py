@@ -3,8 +3,8 @@ from pymongo import MongoClient
 from django.conf import settings
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Skincare
-from .serializers import SkincareSerializer
+from .models import Skincare, SkincareProduct
+from .serializers import SkincareSerializer, SearchSerializer
 from lxml import html
 import requests
 import re
@@ -31,44 +31,54 @@ collection = db["products"]
 # Retrieve all documents from the collection
 mongo_documents = list(collection.find())
 
-# Convert MongoDB documents to JSON-serializable format and serialize them to JSON strings
-json_documents = []
-for document in mongo_documents:
-    json_serializable_document = json_util.loads(json_util.dumps(document))
-    json_string = json.dumps(json_serializable_document, default=str)
-    json_documents.append(json_string)
+# # Convert MongoDB documents to JSON-serializable format and serialize them to JSON strings
+# json_documents = []
+# for document in mongo_documents:
+#     json_serializable_document = json_util.loads(json_util.dumps(document))
+#     json_string = json.dumps(json_serializable_document, default=str)
+#     json_documents.append(json_string)
 
-# Now, json_documents list contains JSON strings of all MongoDB documents in the collection
-print(json_documents)
+# # Now, json_documents list contains JSON strings of all MongoDB documents in the collection
+# print(json_documents)
 
+# Function to search products in MongoDB based on the query
 def search_products(query):
     results = []
-    cursor = collection.find({'Label': {'$regex': query, '$options': 'i'}})  # Perform a case-insensitive partial match search on the 'name' field
+    regex_pattern = f'.*{query}.*'  # Case-insensitive regex pattern for partial match
+    cursor = collection.find({'Label': {'$regex': regex_pattern, '$options': 'i'}})
     for document in cursor:
+        document['_id'] = str(document['_id'])
         results.append(document)
-    return JsonResponse(results, safe=False)
-
-def search_view(request):
-    query = request.GET.get('q', '')  # Get the search query from the request
-    results = search_products(query)
     return results
 
-def get_skincare_products(request):
-    search_query = request.GET.get('search', '')
+# View for handling the search request
+def search_view(request):
+    query = request.GET.get('q', '')  # Get the search query from the request
+    if query:
+        # Perform the search and get the results
+        results = search_products(query)
+        # Return the search results as JSON response
+        return JsonResponse(results, safe=False)
+    else:
+        # If the query is empty, return an empty JSON response or an appropriate error message
+        return JsonResponse({'error': 'No search query provided'}, status=400)
 
-    # Establish a connection to MongoDB and filter products by name using regex
-    client = MongoClient(settings.MONGO_DB_HOST)
-    db = client[settings.MONGO_DB_NAME]
-    collection = db.products
+# def get_skincare_products(request):
+#     search_query = request.GET.get('search', '')
 
-    # Filter skincare products based on search query (name) using regex (case-insensitive)
-    regex_pattern = f'.*{search_query}.*'
-    skincare_products = list(collection.find({"Label": {"$regex": regex_pattern, "$options": "i"}}))
+#     # Establish a connection to MongoDB and filter products by name using regex
+#     client = MongoClient(settings.MONGO_DB_HOST)
+#     db = client[settings.MONGO_DB_NAME]
+#     collection = db.products
 
-    # Close the MongoDB connection
-    client.close()
+#     # Filter skincare products based on search query (name) using regex (case-insensitive)
+#     regex_pattern = f'.*{search_query}.*'
+#     skincare_products = list(collection.find({"Label": {"$regex": regex_pattern, "$options": "i"}}))
 
-    return JsonResponse(skincare_products, safe=False)
+#     # Close the MongoDB connection
+#     client.close()
+
+#     return JsonResponse(skincare_products, safe=False)
 
 # first HTTP API - GET request
 def skincare_list(request):

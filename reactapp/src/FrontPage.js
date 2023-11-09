@@ -174,10 +174,11 @@ function FrontPage() {
                 placeholder="Search..."
                 className="search-input"
               />
-              <Link to={`/skincare-products?search=${searchQuery}`}>
-                <button className="search-button">Search</button>
-              </Link>
-            </Box>
+              <button className="search-button" onClick={handleSearch}>
+                Search
+              </button>
+          </Box>
+
                 
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">

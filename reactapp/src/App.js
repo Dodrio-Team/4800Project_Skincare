@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom'; 
 import FrontPage from './FrontPage';
-import SkincareList from './SkincareList';
+// import SkincareList from './SkincareList';
 import ProductPage from './ProductsPage';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='' element={<FrontPage />} />
-        <Route path='/skincare-products' element={<SkincareList/>} />
+        {/* <Route path='/skincare-products' element={<SkincareList/>} /> */}
         <Route path="/products" element={<ProductPage />} /> {/* Add this route */}
       </Routes>
     </BrowserRouter>
