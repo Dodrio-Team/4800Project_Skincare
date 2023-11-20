@@ -64,14 +64,22 @@ h2 {
   text-align: center;
 }
 
+.search-button {
+  margin-left: 8px;
+  font-weight: 1px;
+  font-family: 'monospace';
+  cursor: pointer;
+}
+
 .custom-button {
   /* Style your button here */
   padding: 10px 20px;
   font-size: 18px;
-  background-color: blanchedalmond;
+  background-color: rgb(255, 230, 192);
   color: black;
   font-weight: 2px;
   font-family: 'monospace';
+  border-radius: 12px;
   cursor: pointer;
 }
 
