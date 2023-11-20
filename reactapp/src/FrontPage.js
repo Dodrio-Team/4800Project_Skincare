@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
 import AppBar from '@mui/material/AppBar';
@@ -47,6 +47,8 @@ function FrontPage() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchResults, setSearchResults] = React.useState([]);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -67,8 +69,14 @@ function FrontPage() {
     e.preventDefault();
     try {
       const response = await axios.get(`/api/search/?q=${searchQuery}`);
+      setSearchResults(response.data);
+
       // Handle the search results from the response data
       console.log(response.data);
+
+      // redirect to the ProductsPage with the search results
+      navigate('/products', {state: {searchResults: response.data} });
+
     } catch (error) {
       // Handle error cases
       console.error('Error fetching search results:', error);
