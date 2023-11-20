@@ -20,7 +20,7 @@ function ProductsPage() {
       {searchResults.map((result) => (
         <div key={result.id}>
           <h3>{result.name}</h3>
-          <p>{result.description}</p>
+          <p>{result.price}</p>
         </div>
       ))}
       {/* <div className="product-grid">
