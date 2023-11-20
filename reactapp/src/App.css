@@ -53,14 +53,14 @@
 
 .button-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 40px; /* Adjust this value to position the button vertically */
+  left: 50%; /* Adjust this value to position the button horizontally */
+  transform: translateX(-50%);
 }
 
-h1 {
+h2 {
   font-family: monospace;
-  font-size: 30px;
+  font-size: 26px;
   text-align: center;
 }
 

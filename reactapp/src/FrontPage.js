@@ -220,7 +220,17 @@ function FrontPage() {
           </Toolbar>
         </Container>
       </AppBar>
-      <h1>Welcome to Flawless! Explore the different budget-friendly products for your skintype</h1>
+      <Box sx = {{ 
+    backgroundColor: 'rgba(255, 235, 205, 0.8)',
+    marginTop: '40px', 
+    marginBottom:'40px', 
+    marginLeft: '200px', 
+    marginRight: '200px', 
+    padding: '150px',
+    borderRadius: '12px',
+    position: 'relative',
+    }}>
+      <h2>Welcome to Flawless! Explore the different budget-friendly products for your skintype</h2>
       <div className="button-container">
         {/* <Link>
           <button className="custom-button">Visit our Products</button>
@@ -230,6 +240,7 @@ function FrontPage() {
       </Link>
 
       </div>
+    </Box>
     </div>  
   );
 }
