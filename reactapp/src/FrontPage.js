@@ -83,6 +83,12 @@ function FrontPage() {
     }
   };
 
+  // feedback form link - to get users reviews
+  const openGoogleForm = () => {
+    const googleFormLink = 'https://forms.gle/C7r7nG2r81o6C2gz7'
+    window.open(googleFormLink)
+  }
+
   return (
     <div className="front-page-container">
       <AppBar position="static" sx={{ backgroundColor: 'blanchedalmond' }}>
@@ -242,6 +248,9 @@ function FrontPage() {
 
       </div>
     </Box>
+    <button className="search-button" onClick={openGoogleForm}>
+        FeedBack Form
+    </button>
     </div>  
   );
 }
