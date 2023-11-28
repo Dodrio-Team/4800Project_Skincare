@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './App.css';
+import logo from './FlawlessLogo.png';
 import axios from 'axios';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,29 +17,6 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import ProductPage from './ProductsPage';
-
-/*
-function FrontPage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  return (
-    <div class = "FrontPage">  
-        <h1>Flawless You</h1>
-        <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Enter product name"
-            />
-            <Link to={`/skincare-products?search=${searchQuery}`}>
-                <button>Search</button>
-            </Link>
-    </div>
-    
-  )
-}
-
-export default FrontPage
-*/
 
 const pages = ['Products', 'Pricing'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -99,24 +77,19 @@ function FrontPage() {
       <AppBar position="static" sx={{ backgroundColor: 'blanchedalmond' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
+          <img
+              src={logo}
+              alt="Flawless Logo"
+              style={{
+                marginRight: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
-                color: 'black',
                 textDecoration: 'none',
+                height: '50px', // Set the height according to your design
               }}
-            >
-              Flawless
-            </Typography>
+            />
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
@@ -171,7 +144,7 @@ function FrontPage() {
                 textDecoration: 'none',
               }}
             >
-              Flawless You
+              Flawless
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
