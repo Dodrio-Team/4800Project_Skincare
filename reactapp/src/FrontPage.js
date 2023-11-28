@@ -181,6 +181,9 @@ function FrontPage() {
             </Box>
 
             <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+              <button className="search-button" onClick={openGoogleForm}>
+                FeedBack Form
+              </button>
               <input
                 type="text"
                 value={searchQuery}
@@ -189,7 +192,8 @@ function FrontPage() {
                 className="search-input"
                 style={{ fontFamily: 'monospace' }}
               />
-              <button className="search-button" onClick={handleSearch}>
+              <button 
+                className="search-button" onClick={handleSearch}>
                 Search
               </button>
             </Box>
@@ -227,7 +231,7 @@ function FrontPage() {
           </Toolbar>
         </Container>
       </AppBar>
-      <Box sx = {{ 
+    <Box sx = {{ 
     backgroundColor: 'rgba(255, 235, 205, 0.8)',
     marginTop: '40px', 
     marginBottom:'40px', 
@@ -248,9 +252,9 @@ function FrontPage() {
 
       </div>
     </Box>
-    <button className="search-button" onClick={openGoogleForm}>
+    {/* <button className="search-button" onClick={openGoogleForm}>
         FeedBack Form
-    </button>
+    </button> */}
     </div>  
   );
 }
