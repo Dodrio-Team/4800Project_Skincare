@@ -40,7 +40,7 @@ function FrontPage() {
 export default FrontPage
 */
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Products', 'Pricing'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function FrontPage() {
@@ -57,8 +57,13 @@ function FrontPage() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
+    if (page === 'blog') {
+      window.location.href = 'https://forms.gle/C7r7nG2r81o6C2gz7'; // Replace with the actual blog link
+    } else if (page === 'product') {
+      navigate('/products'); // Redirect to the ProductsPage
+    } 
   };
 
   const handleCloseUserMenu = () => {
@@ -143,7 +148,7 @@ function FrontPage() {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 ))}
