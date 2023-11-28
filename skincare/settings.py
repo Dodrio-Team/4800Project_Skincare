@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'ec2-3-142-133-23.us-east-2.compute.amazonaws.com',
-    '127.0.0.1'
+    '127.0.0.1' # remember to comment this local host out when sync with aws for it to work 
 ]
 
 
