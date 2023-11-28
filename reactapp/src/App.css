@@ -71,6 +71,13 @@ h2 {
   cursor: pointer;
 }
 
+.feedback-button {
+  margin-right: 8px;
+  font-weight: 1px;
+  font-family: 'monospace';
+  cursor: pointer;
+}
+
 .custom-button {
   /* Style your button here */
   padding: 10px 20px;
