@@ -181,7 +181,7 @@ function FrontPage() {
             </Box>
 
             <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-              <button className="search-button" onClick={openGoogleForm}>
+              <button className="feedback-button" onClick={openGoogleForm}>
                 FeedBack Form
               </button>
               <input
