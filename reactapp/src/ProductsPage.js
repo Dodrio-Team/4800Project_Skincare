@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function ProductsPage() {
   const location = useLocation();
   const searchResults = location.state?.searchResults || [];
+  const noResults = location.state?.noResults || false;
   const [skinType, setSkinType] = useState('all');
   const [products, setProducts] = useState([]);
 
@@ -19,8 +20,13 @@ function ProductsPage() {
 
   return (
     <div style={{ backgroundColor: 'blanchedalmond'}}>
+      <Link to="/">
+        <button className="back-button">
+          Click here to make a new search on the home page! 
+        </button>
+      </Link>
       <h1>Skincare Products</h1> 
-      <div>
+      <div className="filter-type">
             <label>Select Skin Type: </label>
             <select onChange={(e) => setSkinType(e.target.value)}>
                 <option value="normal">Normal</option>
@@ -28,21 +34,24 @@ function ProductsPage() {
                 <option value="dry">Dry</option>
                 <option value="combination">Combination</option>
             </select>
-
       </div>
+      {noResults ? (
+      <p className="noResults">No results found. Please search by label (e.g. Moisturizer, Treatment, etc).</p>
+    ) : (
       <div className="product-container">
-        {searchResults.map((result) => (
+        {searchResults.map((result, index) => (
           <div key={result.id} className="product-item">
             <div className="product-info">
               <h3>{result.name}</h3>
               <p>${Number(result.price).toFixed(0)}</p>
             </div>
             <div className="ingredients-info">
-              <p>{result.ingredients}</p>
+              <p>Ingredients: {result.ingredients}</p>
             </div>
           </div>
         ))}
       </div>
+    )}
     </div>
   );
 }

@@ -57,9 +57,14 @@ function FrontPage() {
       // Handle the search results from the response data
       console.log(response.data);
 
-      // redirect to the ProductsPage with the search results
-      navigate('/products', {state: {searchResults: response.data} });
+      // Check if there are no results
+    const noResults = response.data.length === 0;
 
+    // Redirect to the ProductsPage with the search results and noResults flag
+    navigate('/products', {
+      state: { searchResults: response.data, noResults },
+    });
+      
     } catch (error) {
       // Handle error cases
       console.error('Error fetching search results:', error);

@@ -58,18 +58,49 @@
   transform: translateX(-50%);
 }
 
+h1 {
+  text-align: center;
+  font-family:monospace;
+}
+
 h2 {
   font-family: monospace;
   font-size: 26px;
   text-align: center;
 }
 
+h3 {
+  font-family: monospace;
+  text-align: center;
+}
+
+p {
+  font-family: monospace;
+}
+
 .search-button {
   margin-left: 8px;
   font-weight: 1px;
   font-family: 'monospace';
+  background-color: rgb(255, 230, 192);
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
   cursor: pointer;
 }
+
+.back-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgb(255, 230, 192);
+  color: black;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-family: 'monospace';
+  cursor: pointer;
+}
+
 .custom-button {
   /* Style your button here */
   padding: 10px 20px;
@@ -82,6 +113,17 @@ h2 {
   cursor: pointer;
 }
 
+.filter-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+}
+
+.filter-type select {
+  font-family: monospace;
+}
+
 .product-container {
   display: flex;
   flex-wrap: wrap; /* Allow products to wrap to the next line if the container is not wide enough */
@@ -91,7 +133,7 @@ h2 {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  width: 200px; /* Adjust the width as needed */
+  width: 250px; /* Adjust the width as needed */
 }
 
 .product-info {
@@ -101,6 +143,12 @@ h2 {
 
 .ingredients-info {
   margin-top: 10px; /* Adjust the margin as needed */
+}
+
+.noResults {
+  text-align: center;
+  font-size: 18px;
+  font-family: monospace;
 }
 
 body, html {
