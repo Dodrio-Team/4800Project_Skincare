@@ -141,6 +141,13 @@ p {
   justify-content: space-between;
 }
 
+.skin-types {
+  margin-top: 10px; /* Adjust the margin as needed */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
 .ingredients-info {
   margin-top: 10px; /* Adjust the margin as needed */
   word-wrap: break-word;

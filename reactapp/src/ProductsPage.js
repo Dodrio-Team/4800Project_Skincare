@@ -45,6 +45,19 @@ function ProductsPage() {
                 <h3>{result.name}</h3>
                 <p>${Number(result.price).toFixed(0)}</p>
               </div>
+              <div className="skin-types">
+                <p>Skin Type(s):{' '}
+                {!result.Normal && !result.Oily && !result.Dry && !result.Combination ? (
+                  <span>N/A</span>
+                ) : (
+                  <>
+                    {result.Normal ? <span> Normal{result.Oily || result.Dry || result.Combination ? ', ' : ''} </span> : null}
+                    {result.Oily ? <span> Oily{result.Dry || result.Combination ? ', ' : ''} </span> : null}
+                    {result.Dry ? <span> Dry{result.Combination ? ', ' : ''}</span> : null}
+                    {result.Combination ? <span> Combination </span> : null}
+                  </>
+                )}</p>
+              </div>
               <div className="ingredients-info">
                 <p>Ingredients: {result.ingredients}</p>
               </div>
