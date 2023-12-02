@@ -38,19 +38,19 @@ function ProductsPage() {
       {noResults ? (
       <p className="noResults">No results found. Please search by label (e.g. Moisturizer, Treatment, etc).</p>
     ) : (
-      <div className="product-container">
-        {searchResults.map((result, index) => (
-          <div key={result.id} className="product-item">
-            <div className="product-info">
-              <h3>{result.name}</h3>
-              <p>${Number(result.price).toFixed(0)}</p>
+        <div className="product-container" style={{ display: 'flex', justifyContent: 'center' }}>
+          {searchResults.map((result, index) => (
+            <div key={result.id} className="product-item">
+              <div className="product-info">
+                <h3>{result.name}</h3>
+                <p>${Number(result.price).toFixed(0)}</p>
+              </div>
+              <div className="ingredients-info">
+                <p>Ingredients: {result.ingredients}</p>
+              </div>
             </div>
-            <div className="ingredients-info">
-              <p>Ingredients: {result.ingredients}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div> 
     )}
     </div>
   );
