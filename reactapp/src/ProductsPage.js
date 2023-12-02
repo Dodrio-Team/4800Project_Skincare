@@ -41,6 +41,7 @@ function ProductsPage() {
         <div className="product-container" style={{ display: 'flex', justifyContent: 'center' }}>
           {searchResults.map((result, index) => (
             <div key={result.id} className="product-item">
+              <h2>{result.brand}</h2>
               <div className="product-info">
                 <h3>{result.name}</h3>
                 <p>${Number(result.price).toFixed(0)}</p>
