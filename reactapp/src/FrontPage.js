@@ -171,7 +171,7 @@ function FrontPage() {
     borderRadius: '12px',
     position: 'relative',
     }}>
-      <h2>Welcome to Flawless! Explore the different skincare products for your skintype: Search on our Home Page!</h2>
+      <h2>Welcome to Flawless! Explore the different skincare products for your skintype - Search on our Home Page!</h2>
       <div className="button-container">
       <Link to="/products"> {ProductPage}
         <button className="custom-button">Visit our Products</button>
