@@ -143,6 +143,9 @@ p {
 
 .ingredients-info {
   margin-top: 10px; /* Adjust the margin as needed */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .noResults {
