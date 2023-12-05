@@ -142,6 +142,10 @@ p {
   justify-content: space-between;
 }
 
+.rank-info {
+  font-family: monospace;
+}
+
 .skin-types {
   margin-top: 10px; /* Adjust the margin as needed */
   word-wrap: break-word;

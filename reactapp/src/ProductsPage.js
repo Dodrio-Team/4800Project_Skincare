@@ -46,6 +46,9 @@ function ProductsPage() {
                 <h3>{result.name}</h3>
                 <p>${Number(result.price).toFixed(0)}</p>
               </div>
+              <div className="rank-info">
+              <p>Rating: {renderRatingStars(result.rank, result.rank)}</p>
+              </div>
               <div className="skin-types">
                 <p>Skin Type(s):{' '}
                 {!result.Normal && !result.Oily && !result.Dry && !result.Combination ? (
@@ -70,5 +73,30 @@ function ProductsPage() {
   );
 }
 
-export default ProductsPage;
+function customRound(number) {
+  const decimalPart = number % 1;
+  return number + (decimalPart >= 0.5 ? 1 - decimalPart : -decimalPart);
+}
 
+// helper function to render stars based on the rating out of 5
+function renderRatingStars(rating, originalRating) {
+  const maxRating = 5;
+  const roundedRating = customRound(rating); // Round to the nearest whole number
+
+  const stars = [];
+  for (let i = 0; i < maxRating; i++) {
+    if (i < roundedRating) {
+      stars.push(<span key={i}>&#9733;</span>); // Unicode character for a solid star
+    } else {
+      stars.push(<span key={i}>&#9734;</span>); // Unicode character for an empty star
+    }
+  }
+
+  return (
+    <>
+      {stars} ({originalRating.toFixed(1)}/5)
+    </>
+  );
+}
+
+export default ProductsPage;
